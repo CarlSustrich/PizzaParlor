@@ -22,3 +22,7 @@ function Pizza () {
   this.premiumToppings = [];
   this.cost;
 }
+
+Pizza.prototype.calculateTotal = function () {
+  this.size === "large" ? this.cost += 12 : this.size === "medium" ? this.cost += 10 : this.cost += 8;
+}
