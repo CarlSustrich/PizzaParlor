@@ -24,5 +24,6 @@ function Pizza () {
 }
 
 Pizza.prototype.calculateTotal = function () {
-  this.size === "large" ? this.cost += 12 : this.size === "medium" ? this.cost += 10 : this.cost += 8;
+  this.cost = 0;
+  this.size === "large" ? this.cost += 12 : this.size === "medium" ? this.cost += 10 : this.size === "small" ? this.cost += 8 : this.cost += 0;
 }

@@ -17,14 +17,23 @@ Test: It should assign a value based on the chosen pizza size & update the Pizza
 Code: 
 newPizza.size = "small"
 newPizza.calculateTotal();
-Expected output: newPizza { size: small, basic toppings: [], premium toppings: [], cost: 8}
+Expected output: newPizza { size: "small", basic toppings: [], premium toppings: [], cost: 8}
 
-code: 
+Code: 
 newPizza.size = "medium"
 newPizza.calculateTotal();
-Expected Output: newPizza { size: medium, basic toppings: [], premium toppings: [], cost: 10}
+Expected Output: newPizza { size: "medium", basic toppings: [], premium toppings: [], cost: 10}
 
 code: 
 newPizza.size = "large"
 newPizza.calculateTotal();
-Expected Output: newPizza { size: large, basic toppings: [], premium toppings: [], cost: 12}
+Expected Output: newPizza { size: "large", basic toppings: [], premium toppings: [], cost: 12}
+
+Test: It should overwrite the previously assigned cost value if ran more than once, rather than add to it.
+code: newPizza.size = "large"
+newPizza.calculateTotal();
+newPizza.calculateTotal();
+Expected Output: newPizza {size: "large", basic toppings: [], premium toppings: [], cost: 12}
+
+Test: It should assign a value based on the chosen basic toppings & update the Pizza cost key.
+code: 
