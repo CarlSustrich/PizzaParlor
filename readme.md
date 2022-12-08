@@ -36,4 +36,11 @@ newPizza.calculateTotal();
 Expected Output: newPizza {size: "large", basic toppings: [], premium toppings: [], cost: 12}
 
 Test: It should assign a value based on the chosen basic toppings & update the Pizza cost key.
-code: 
+code: newPizza.basicToppings.push("pepperoni")
+newPizza.calculateTotal();
+Expected Output: newPizza {size: , basic toppings ["pepperoni"], premium toppings: [], cost: 2}
+
+code: newPizza.basicToppings.push("pepperoni")
+newPizza.basicToppings.push("pineapple")
+newPizza.calculateTotal();
+Expected Output: newPizza {size: , basic toppings ["pepperoni", "pineapple"], premium toppings: [], cost: 4}
