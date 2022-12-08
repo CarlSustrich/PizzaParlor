@@ -12,6 +12,13 @@ pizza object
   */
 
 function Order () {
-  this.cost = 0;
+  this.cost;
   this.pizzas = [];
+}
+
+function Pizza () {
+  this.size;
+  this.basicToppings = [];
+  this.premiumToppings = [];
+  this.cost;
 }
