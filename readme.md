@@ -11,7 +11,7 @@ Code: let newPizza = new Pizza ();
 Expected output: newPizza { size: , basic toppings: [], premium toppings: [], cost: 0}
 
 
-describe Pizza.prototype.calculateTotal
+describe Pizza.prototype.calculateTotal()
 
 Test: It should assign a value based on the chosen pizza size & update the Pizza cost key.
 Code: 
@@ -45,7 +45,6 @@ newPizza.basicToppings.push("pineapple")
 newPizza.calculateTotal();
 Expected Output: newPizza {size: , basic toppings ["pepperoni", "pineapple"], premium toppings: [], cost: 4}
 
-
 Test: It should assign a value based on the chosen premium toppings & update the Pizza cost key at the rate of 4 per topping.
 code: newPizza.premiumToppings.push("anchovy")
 newPizza.calculateTotal();
@@ -55,3 +54,15 @@ code: newPizza.basicToppings.push("anchovy")
 newPizza.basicToppings.push("someotherpremiumtopping")
 newPizza.calculateTotal();
 Expected Output: newPizza {size: , basic toppings [], premium toppings: ["anchovy", "someotherpremiumtopping"], cost: 4}
+
+
+Describe: Order.prototype.calculateTotal()
+
+Test: It should update the cost key for the Order object based on the cost of each pizza in the pizzas key.
+Code: 
+let newOrder = new Order();
+let pizza1 = new Pizza();
+pizza1.cost = 10;
+newOrder.pizzas.push(pizza1);
+newOrder.calculateTotal();
+Expected Output: newOrder {cost: 10, pizzas: [pizza1]}
