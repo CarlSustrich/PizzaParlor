@@ -1,17 +1,56 @@
-describe Order ()
+# _Pizza Parlor_
+
+#### By _**Carl Sustrich**_
+
+#### _A simple javascript interface to replicate a pizza building/ ordering website._
+
+## Technologies Used
+
+* _HTML_
+* _CSS_
+* _Javascript_
+
+## Description
+
+_This browser application offers users the ability to customize a variety of features of their pizza, including size and toppings. It will dynamically display the attributes of each ordered pizza, and allow the user to delete individual pizzas after having built them._
+
+## Setup/Installation Requirements
+
+* _If you wish to clone this work and download the code to your local machine:_
+* _Click the '↓Code' button at the top right of [this](https://github.com/CarlSustrich/PizzaParlor) respository_
+* _Copy the URL for the repository._
+* _Open Terminal._
+* _Change the current working directory to the location where you want the cloned directory._
+* _Type 'git clone' followed by the URL you copied earlier, then press enter_
+* _Open the repository in VS Code, and double click the index.html file_
+
+## Known Bugs
+
+* _No known issues_
+
+## License
+
+_This application is not currently covered under any license._
+
+Copyright (c) _12/09/22_ _Carl Sustrich_
+
+
+## _TDD:_
+
+#### describe Order ()
 
 Test: It should create an object with a cost key and a pizzas key which holds an empty array.
 code: let newOrder = new Order();
 Expected Output: newOrder { cost: 0, pizzas: []}
 
-describe Pizza ()
+#### describe Pizza ()
 
 Test: It should create an object with a size key, a basic toppings & premium toppings key, each with an empty array, and a cost key.
 Code: let newPizza = new Pizza ();
 Expected output: newPizza { size: , basic toppings: [], premium toppings: [], cost: 0}
 
 
-describe Pizza.prototype.calculateTotal()
+#### describe Pizza.prototype.calculateTotal()
 
 Test: It should assign a value based on the chosen pizza size & update the Pizza cost key.
 Code: 
@@ -56,7 +95,7 @@ newPizza.calculateTotal();
 Expected Output: newPizza {size: , basic toppings [], premium toppings: ["anchovy", "someotherpremiumtopping"], cost: 4}
 
 
-Describe: Order.prototype.calculateTotal()
+#### Describe: Order.prototype.calculateTotal()
 
 Test: It should update the cost key for the Order object based on the cost of each pizza in the pizzas key.
 Code: 
@@ -68,7 +107,7 @@ newOrder.calculateTotal();
 Expected Output: newOrder {cost: 10, pizzas: [pizza1]}
 
 
-Describe: Pizza.prototype.orderToString()
+#### Describe: Pizza.prototype.orderToString()
 
 Test: It should take all the details of a pizza and convert it into a string.
 code: 

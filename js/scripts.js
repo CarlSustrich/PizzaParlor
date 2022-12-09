@@ -23,7 +23,7 @@ Pizza.prototype.calculateTotal = function () {
 };
 
 Pizza.prototype.orderToString = function () {
-  return `${this.size.charAt(0).toUpperCase() + this.size.slice(1)} Pizza <br> Basic Toppings: <br> ${this.basicToppings.join(', ')} <br> Premium Toppings: <br> ${this.premiumToppings.join(', ')} <br> Cost: \$${this.cost} <br><br>`;
+  return `${this.size.charAt(0).toUpperCase() + this.size.slice(1)} Pizza <br> Basic Toppings: <br> ${(this.basicToppings.join(', ')) ? (this.basicToppings.join(', ')) : "No Basic Topings Added"} <br> Premium Toppings: <br> ${(this.premiumToppings.join(', ')) ? (this.premiumToppings.join(', ')) : "No Premium Toppings Added"} <br> Cost: \$${this.cost} <br><br>`;
 };
 
 Order.prototype.calculateTotal = function () {
@@ -43,7 +43,7 @@ function pullCheckedValuesFor(name) {
   let arr = [];
   checkedboxes.forEach(function (checkbox) {
     if (checkbox.checked) {
-      arr.push(checkbox.value);
+      arr.push(`${checkbox.value.charAt(0).toUpperCase() + checkbox.value.slice(1)}`);
     }
   });
   return arr;
@@ -67,10 +67,16 @@ function displayPizzaInfo() {
   let pizzaDetailsHolder = document.querySelector('#individualPizzaDetails');
   pizzaDetailsHolder.innerHTML = null;
   newOrder.pizzas.forEach(function(pizza){
-    pizzaDetailsHolder.innerHTML += pizza.orderToString(); (element) => element > 13
-    pizzaDetailsHolder.innerHTML += (`<button onclick="deletePizza(${newOrder.pizzas.indexOf(pizza)})">Delete This Pizza</button><br><br>`);
+    pizzaDetailsHolder.innerHTML += pizza.orderToString();
+    pizzaDetailsHolder.innerHTML += (`<button id="${newOrder.pizzas.indexOf(pizza)}">Delete This Pizza</button><br><br>`);
   });
   document.querySelector("#totalCost").innerText = newOrder.cost;
+}
+
+function shouldIDeletePizza(event) {
+  if (event.target.tagName.toLowerCase() === "button") {
+    deletePizza(event.target.id);
+  } 
 }
 
 function deletePizza(index) {
@@ -88,4 +94,6 @@ function handleFormSubmission (event) {
 
 window.addEventListener("load", function (){
   document.querySelector("form#new-pizza").addEventListener("submit", handleFormSubmission);
+  document.querySelector("div#individualPizzaDetails").addEventListener("click", shouldIDeletePizza);   
+
 });
