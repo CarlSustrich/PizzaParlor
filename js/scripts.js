@@ -31,6 +31,7 @@ Order.prototype.calculateTotal = function () {
 }
 
 //UI
+
 function pullCheckedValuesFor(name) {
   let checkedboxes = document.getElementsByName(`${name}`);
   let arr = [];
@@ -42,19 +43,29 @@ function pullCheckedValuesFor(name) {
   return arr;
 }
 
-
-function handleFormSubmission (event) {
-  event.preventDefault();
+function makePizza() {
   let newPizza = new Pizza();
   newPizza.size = document.querySelector("#size").value;
-  pullCheckedValuesFor('bToppings').forEach (function (item) {
+  pullCheckedValuesFor('bToppings').forEach(function (item) {
     newPizza.basicToppings.push(item);
   });
-  pullCheckedValuesFor('pToppings').forEach (function (item) {
+  pullCheckedValuesFor('pToppings').forEach(function (item) {
     newPizza.premiumToppings.push(item);
   });
   newPizza.calculateTotal();
   newOrder.pizzas.push(newPizza);
+  newOrder.calculateTotal();
+}
+
+function updateUI() {
+  document.querySelector("#totalCost").innerText = newOrder.cost;
+}
+
+function handleFormSubmission (event) {
+  event.preventDefault();
+  makePizza();
+  document.getElementById("new-pizza").reset();
+  updateUI();
 }
 
 
