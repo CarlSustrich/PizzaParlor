@@ -12,9 +12,9 @@
     <label for="size">Choose a size:</label>
     <br>
     <select name="size" id="size">
-      <option value="small">Small</option>
-      <option value="medium">Medium</option>
-      <option value="large">Large</option>
+      <option value="small">Small $8</option>
+      <option value="medium">Medium $10</option>
+      <option value="large">Large $12</option>
     </select>
     <br><br>
     Choose your Toppings
@@ -31,7 +31,7 @@
       <label for="mushrooms">Mushrooms</label>
     </div>
     <br><br>
-    <div id= "premiumToppings">Premium Toppings ($4 per):
+    <div>Premium Toppings ($4 per):
       <br>
       <input type="checkbox" id="pineapple" name="pToppings" value="pineapple">
       <label for="pineapple"> Pineapple</label>
@@ -46,7 +46,7 @@
     <button type="submit">Make this pizza!</button>
   </form>
 
-  <div class="hidden">
+  <div>
     <h4>Your current order total: $<span id="totalCost"></span></h4>
     <div id="individualPizzaDetails"></div>
   </div>

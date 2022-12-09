@@ -16,14 +16,14 @@ function Pizza () {
 
 Pizza.prototype.calculateTotal = function () {
   this.cost = 0;
-  this.size === "large" ? this.cost += 12 : this.size === "medium" ? this.cost += 10 : this.size === "small" ? this.cost += 8 : this.cost += 0;
+  sizeCosts = {large: 12, medium: 10, small: 8};
+  this.cost = sizeCosts[this.size];
   this.cost += ((this.basicToppings.length) * 2);
-  this.cost += ((this.premiumToppings.length) *4);
+  this.cost += ((this.premiumToppings.length) * 4);
 };
 
 Pizza.prototype.orderToString = function () {
-  let pizzaString = `${this.size.charAt(0).toUpperCase() + this.size.slice(1)} Pizza <br> Basic Toppings: <br> ${this.basicToppings} <br> Premium Toppings: <br> ${this.premiumToppings} <br> Cost: \$${this.cost} <br><br>`;
-  return pizzaString;
+  return `${this.size.charAt(0).toUpperCase() + this.size.slice(1)} Pizza <br> Basic Toppings: <br> ${this.basicToppings.join(', ')} <br> Premium Toppings: <br> ${this.premiumToppings.join(', ')} <br> Cost: \$${this.cost} <br><br>`;
 };
 
 Order.prototype.calculateTotal = function () {
@@ -67,15 +67,22 @@ function displayPizzaInfo() {
   let pizzaDetailsHolder = document.querySelector('#individualPizzaDetails');
   pizzaDetailsHolder.innerHTML = null;
   newOrder.pizzas.forEach(function(pizza){
-    pizzaDetailsHolder.innerHTML += pizza.orderToString();
+    pizzaDetailsHolder.innerHTML += pizza.orderToString(); (element) => element > 13
+    pizzaDetailsHolder.innerHTML += (`<button onclick="deletePizza(${newOrder.pizzas.indexOf(pizza)})">Delete This Pizza</button><br><br>`);
   });
+  document.querySelector("#totalCost").innerText = newOrder.cost;
+}
+
+function deletePizza(index) {
+  newOrder.pizzas.splice(index, 1);
+  newOrder.calculateTotal();
+  displayPizzaInfo();
 }
 
 function handleFormSubmission (event) {
   event.preventDefault();
   makePizza();
   document.getElementById("new-pizza").reset();
-  document.querySelector("#totalCost").innerText = newOrder.cost;
   displayPizzaInfo();
 }
 
