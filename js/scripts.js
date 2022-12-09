@@ -1,20 +1,10 @@
-/* 
-order object
-  cost:
-  pizzas: array of pizza objects
-
-
-pizza object
-  size:
-  basic toppings array (.length * basic surcharge)
-  expensive toppings array (.length * expensive surcharge)
-  cost: 
-  */
+//business
 
 function Order () {
   this.cost = 0;
   this.pizzas = [];
 }
+let newOrder = new Order();
 
 function Pizza () {
   this.size;
@@ -39,3 +29,35 @@ Order.prototype.calculateTotal = function () {
   })
   this.cost += totalCost;
 }
+
+//UI
+function pullCheckedValuesFor(name) {
+  let checkedboxes = document.getElementsByName(`${name}`);
+  let arr = [];
+  checkedboxes.forEach(function (checkbox) {
+    if (checkbox.checked) {
+      arr.push(checkbox.value)
+    }
+  });
+  return arr;
+}
+
+
+function handleFormSubmission (event) {
+  event.preventDefault();
+  let newPizza = new Pizza();
+  newPizza.size = document.querySelector("#size").value;
+  pullCheckedValuesFor('bToppings').forEach (function (item) {
+    newPizza.basicToppings.push(item);
+  });
+  pullCheckedValuesFor('pToppings').forEach (function (item) {
+    newPizza.premiumToppings.push(item);
+  });
+  newPizza.calculateTotal();
+  newOrder.pizzas.push(newPizza);
+}
+
+
+window.addEventListener("load", function (){
+  document.querySelector("form#new-pizza").addEventListener("submit", handleFormSubmission);
+});

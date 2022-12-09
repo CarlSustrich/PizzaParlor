@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
+  <script src="js/scripts.js"></script>
+  <title>Pizza Parlor</title>
+</head>
+<body>
+  <h1>Pizza Parlor</h1>
+  <h2>Add a new Pizza:</h2>
+  <form id="new-pizza">
+    <label for="size">Choose a size:</label>
+    <br>
+    <select name="size" id="size">
+      <option value="small">Small</option>
+      <option value="medium">Medium</option>
+      <option value="large">Large</option>
+    </select>
+    <br><br>
+    Choose your Toppings
+    <br><br>
+    <div id="formBToppings">Basic Toppings ($2 per): 
+      <br>
+      <input type="checkbox" id="pepperoni" name="bToppings" value="pepperoni">
+      <label for="pepperoni"> Pepperoni</label>
+      <br>
+      <input type="checkbox" id="peppers" name="bToppings" value="peppers">
+      <label for="peppers"> Bell Peppers</label>
+      <br>
+      <input type="checkbox" id="mushrooms" name="bToppings" value="mushrooms">
+      <label for="mushrooms">Mushrooms</label>
+    </div>
+    <br><br>
+    <div id= "premiumToppings">Premium Toppings ($4 per):
+      <br>
+      <input type="checkbox" id="pineapple" name="pToppings" value="pineapple">
+      <label for="pineapple"> Pineapple</label>
+      <br>
+      <input type="checkbox" id="chicken" name="pToppings" value="chicken">
+      <label for="chicken"> Chicken</label>
+      <br>
+      <input type="checkbox" id="bacon" name="pToppings" value="bacon">
+      <label for="bacon">Bacon</label>
+    </div>  
+    <br><br>
+    <button type="submit">Make this pizza!</button>
+  </form>
+</body>
+</html>
