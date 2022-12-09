@@ -22,9 +22,9 @@ Pizza.prototype.calculateTotal = function () {
 };
 
 Pizza.prototype.orderToString = function () {
-  let pizzaString = `${this.size} Pizza <br> Basic Toppings: <br> ${this.basicToppings} <br> Premium Toppings: <br> ${this.premiumToppings} <br> Cost: \$${this.cost} <br><br>`;
+  let pizzaString = `${this.size.charAt(0).toUpperCase() + this.size.slice(1)} Pizza <br> Basic Toppings: <br> ${this.basicToppings} <br> Premium Toppings: <br> ${this.premiumToppings} <br> Cost: \$${this.cost} <br><br>`;
   return pizzaString;
-}
+};
 
 Order.prototype.calculateTotal = function () {
   this.cost = 0;
@@ -63,25 +63,6 @@ function makePizza() {
   newOrder.calculateTotal();
 }
 
-function updateUI() {
-  document.querySelector("#totalCost").innerText = newOrder.cost;
-}
-
-function listContacts(addressBookToDisplay) {
-  let contactsDiv = document.querySelector("div#contacts");
-  contactsDiv.innerText =  null;
-  const ul = document.createElement("ul");
-  Object.keys(addressBookToDisplay.contacts).forEach(function(key) {
-    const contact = addressBookToDisplay.findContact(key);
-    const li = document.createElement("li");
-    li.append(contact.fullName());
-    li.setAttribute("id", contact.id);
-    ul.append(li);
-  });
-  contactsDiv.append(ul);
-}
-// .innerHtml instead of innertext??
-
 function displayPizzaInfo() {
   let pizzaDetailsHolder = document.querySelector('#individualPizzaDetails');
   pizzaDetailsHolder.innerHTML = null;
@@ -90,37 +71,11 @@ function displayPizzaInfo() {
   });
 }
 
-// function displayPizzaInfo() {
-//   let pizzaDetailsHolder = document.querySelector('#individualPizzaDetails');
-//   let pizzaP = document.createElement("p");
-
-//   newOrder.pizzas.forEach(function (pizza) {
-//     let pizzaUL = document.createElement('ul');
-
-//     let sizeLI = document.createElement('li');
-//     sizeLI.innerHTML = `Size: ${pizza.size} <br>`;
-//     let bTLI = document.createElement('li');
-//     bTLI.innerHTML = `Basic Toppings: ${pizza.basicToppings.join(", ")}<br>`;
-//     let pTLI = document.createElement('li');
-//     pTLI.innerHTML = `Premium Toppings: ${pizza.premiumToppings.join()}<br>`;
-//     let costLI = document.createElement('li');
-//     costLI.innerHTMl = `Cost: ${pizza.cost} <br>`;
-
-//     pizzaUL.append(sizeLI);
-//     pizzaUL.append(bTLI);
-//     pizzaUL.append(pTLI);
-//     pizzaUL.append(costLI);
-//     pizzaP.append(pizzaUL);
-//   });
-//   console.log(pizzaP)
-//   pizzaDetailsHolder.innerHTML = pizzaP;
-// }
-
 function handleFormSubmission (event) {
   event.preventDefault();
   makePizza();
   document.getElementById("new-pizza").reset();
-  updateUI();
+  document.querySelector("#totalCost").innerText = newOrder.cost;
   displayPizzaInfo();
 }
 

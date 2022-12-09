@@ -66,3 +66,22 @@ pizza1.cost = 10;
 newOrder.pizzas.push(pizza1);
 newOrder.calculateTotal();
 Expected Output: newOrder {cost: 10, pizzas: [pizza1]}
+
+
+Describe: Pizza.prototype.orderToString()
+
+Test: It should take all the details of a pizza and convert it into a string.
+code: 
+let pizza1 = new Pizza();
+pizza1.size = "small";
+pizza1.cost = 14;
+pizza1.basicToppings.push("pepperoni")
+pizza1.basicToppings.push("pineapple")
+pizza1.orderToString();
+Expected Result:
+"Small Pizza
+Basic Toppings:
+pepperoni
+Premium Toppings:
+pineapple
+Cost: $14"
